@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ptc_ui_quiz/core/utils/assets_manager.dart';
 import 'package:ptc_ui_quiz/core/utils/color_manager.dart';
 import 'package:ptc_ui_quiz/core/utils/style_maneger.dart';
-import 'package:ptc_ui_quiz/main.dart';
 import 'package:ptc_ui_quiz/widgets/custom_navigate_bar.dart';
 
-import 'grocery_home.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -28,7 +26,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Row(
               children: [
                 Text("Your holiday \nshopping \ndelivered to your\nhome",style: StyleManager.boldTextStyle(),),
-                // Image.asset(AssetsManager.emojiImage,width: 33,height: 33,)
               ],
             ),
               const SizedBox(height: 20,),

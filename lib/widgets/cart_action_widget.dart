@@ -15,7 +15,7 @@ class CartActionWidget extends StatelessWidget {
             color:black ? Colors.black: Colors.white,
             size: 28,
           ),
-          Positioned(
+          const Positioned(
             top: -4,
             left: 9,
             child: CircleAvatar(

@@ -1,51 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:ptc_ui_quiz/core/utils/assets_manager.dart';
 import 'package:ptc_ui_quiz/screens/product_details_page.dart';
-
 import '../core/utils/color_manager.dart';
 import '../widgets/cart_action_widget.dart';
+import '../widgets/product_card_shape2.dart';
 
 class CategoriesInfoPage extends StatefulWidget {
   const CategoriesInfoPage({super.key});
-
   @override
   State<CategoriesInfoPage> createState() => _CategoriesInfoPageState();
 }
 
 class _CategoriesInfoPageState extends State<CategoriesInfoPage>  with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final List<Map<String, dynamic>> _items = [
-    {
-      'image': AssetsManager.item1,
-      'name': 'Item 1',
-      'price': '\$9.99',
-    },
-    {
-      'image': AssetsManager.item2,
-      'name': 'Item 2',
-      'price': '\$14.99',
-    },
-    {
-      'image': AssetsManager.item3,
-      'name': 'Item 3',
-      'price': '\$7.99',
-    },
-    {
-      'image': AssetsManager.item1,
-      'name': 'Item 4',
-      'price': '\$19.99',
-    },
-    {
-      'image': AssetsManager.item2,
-      'name': 'Item 2',
-      'price': '\$14.99',
-    },
-    {
-      'image': AssetsManager.item3,
-      'name': 'Item 3',
-      'price': '\$7.99',
-    },
-  ];
+
 @override
   void initState() {
   _tabController = TabController(length: 3, vsync: this);
@@ -106,13 +73,13 @@ class _CategoriesInfoPageState extends State<CategoriesInfoPage>  with SingleTic
         ],
       ),
       body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 16.0,
           crossAxisSpacing: 16.0,
           childAspectRatio: 0.7,
         ),
-        itemCount: _items.length,
+        itemCount: items.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: (){
@@ -120,45 +87,7 @@ class _CategoriesInfoPageState extends State<CategoriesInfoPage>  with SingleTic
                 return ProductDetailsPage();
               }));
             },
-            child: Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(4.0)),
-                      child: Image.asset(
-                        _items[index]['image'],
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          _items[index]['name'],
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        SizedBox(height: 8.0),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child:ProductCardShape2(index:index)
           );
         },
       ),
